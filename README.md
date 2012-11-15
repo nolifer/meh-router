@@ -1,6 +1,6 @@
 meh
 ======
-Meh is a tiny [https://github.com/sinatra/sinatra](Sinatra-like) PHP router. It's only 975 bytes. 
+Meh is a tiny [Sinatra-like](https://github.com/sinatra/sinatra) PHP router. It's only 975 bytes. 
 
 How to use?
 --------
