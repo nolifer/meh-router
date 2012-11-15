@@ -24,7 +24,7 @@ What about the post method?
 
 	require 'meh.min.php';
 	require 'orm.php';
-	meh::post('/about', function()){
+	meh::post('/about', function($name)){
 		$users = ORM::for_table('users')->where_equals('id', (int)$_POST['id'])->find_many();
 		return include 'files.php';
 	}
