@@ -47,4 +47,14 @@ Third-party codes
         return $meh->blog->get_title($id);
     });
 
+
+Routing keywords
+--------
+
+	:anything: 	=>	(.*),			# anything!
+	:numbers:	=>	([0-9]+),		# moar than one number
+	:letters:	=>	([a-zA-Z]+),	# moar than one letter
+	:number:	=>	([0-9]),		# just one number
+	:letter:	=>	([a-zA-Z]),		# just one letter
+	/			=>	\/				# regexp fix
 	
