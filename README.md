@@ -1,33 +1,50 @@
 meh
 ======
-Meh is a tiny [Sinatra-like](https://github.com/sinatra/sinatra) PHP router. It's only 975 bytes. 
+meh is a tiny [Sinatra-like](https://github.com/sinatra/sinatra) PHP router.
 
 How to use?
 --------
 If you are using the default .htaccess, create a PHP file called "index.php" and define your routes:
 
-	require 'meh.min.php';
-	meh::get('/about', function(){
+	$meh = meh::start();
+	$meh->get('/about', function(){
 		return 'weirdo';
 	});
 
 
-Of course, you can use regexps too:
+Using a regexp
+--------
 
-	require 'meh.min.php';
-	meh::get('/about/(.*)', function($name)){
+	$meh = meh::start();
+	$meh->get('/about/(.*)', function($name)){
 		return 'I know nothing about '.$name[1];
 	});
 
 
-What about the post method?
+HTTP methods
+--------
+meh-router supports [8 HTTP methods](http://tools.ietf.org/html/rfc2616).
 
-	require 'meh.min.php';
-	require 'orm.php';
 	meh::post('/about', function(){
-		$users = ORM::for_table('users')->where_equals('id', (int)$_POST['id'])->find_many();
-		return include 'files.php';
+		return 'hello, poster!';
 	});
+	
+	meh::any('/about', function(){
+		return 'hello, stranger!';
+	});
+	
+
+Third-party codes
+--------
 
 
-##### You can use meh::any() to accept any HTTP methods. #####
+    $meh = meh::start();
+    $meh->modules(array(
+                'blog' => 'blog.php'
+            ));
+
+    $meh->get('/blog/:numbers:', function($id) use($meh){
+        return $meh->blog->get_title($id);
+    });
+
+	
